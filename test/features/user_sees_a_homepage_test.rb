@@ -12,10 +12,17 @@ class HomepageTest < CapybaraTestCase
   end
 
   def test_user_gets_an_error_message
-    visit '/house'
+    visit '/test'
 
     assert_equal 404, page.status_code
     assert page.has_content?("Page not found.")
+  end
+
+  def test_user_can_see_about_page
+    visit '/about'
+
+    assert_equal 200, page.status_code
+    assert page.has_content?("Here's some stuff to know.")
   end
 
 end
